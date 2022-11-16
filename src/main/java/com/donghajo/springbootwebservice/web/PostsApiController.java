@@ -1,11 +1,14 @@
 package com.donghajo.springbootwebservice.web;
 
+import com.donghajo.springbootwebservice.web.dto.PostsListResponseDto;
 import com.donghajo.springbootwebservice.web.dto.PostsResponseDto;
 import com.donghajo.springbootwebservice.web.dto.PostsSaveRequestDto;
 import com.donghajo.springbootwebservice.web.dto.PostsUpdateRequestDto;
 import com.donghajo.springbootwebservice.web.service.posts.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -27,4 +30,11 @@ public class PostsApiController {
     public PostsResponseDto findById(@PathVariable Long id){
         return postsService.findById(id);
     }
+
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id){
+        postsService.delete(id);
+        return id;
+    }
+
 }
