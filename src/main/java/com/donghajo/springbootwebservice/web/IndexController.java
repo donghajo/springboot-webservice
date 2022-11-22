@@ -1,6 +1,9 @@
 package com.donghajo.springbootwebservice.web;
 
 
+
+import com.donghajo.springbootwebservice.config.auth.LoginUser;
+import com.donghajo.springbootwebservice.config.auth.dto.SessionUser;
 import com.donghajo.springbootwebservice.web.dto.PostsResponseDto;
 import com.donghajo.springbootwebservice.web.service.posts.PostsService;
 import lombok.RequiredArgsConstructor;
@@ -9,14 +12,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
     private final PostsService postsService;
+    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc());
+        if(user != null){
+            model.addAttribute("userName", user.getName());
+        }
         return "index";
     }
 
