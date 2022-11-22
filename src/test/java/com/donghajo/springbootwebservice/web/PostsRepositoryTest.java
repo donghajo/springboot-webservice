@@ -1,4 +1,4 @@
-package com.donghajo.springbootwebservice.web.domain;
+package com.donghajo.springbootwebservice.web;
 
 
 import com.donghajo.springbootwebservice.web.domain.posts.Posts;
@@ -29,7 +29,7 @@ public class PostsRepositoryTest {
     }
 
     @Test
-    public void posts_불러오기(){
+    public void posts_loading(){
         String title = "test title";
         String content = "test content";
 
