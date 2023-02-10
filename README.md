@@ -18,4 +18,4 @@
 
 
 # 관련 서적
-![book](/assets/awsspringboot.png) -->
+![book](/assets/awsspringboot.jpeg) -->
